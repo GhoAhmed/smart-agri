@@ -114,7 +114,7 @@
     <div class="features-grid">
       <div class="feature-card fade-in-up" *ngFor="let f of features; let i = index"
         [style.animation-delay]="(i * 0.08) + 's'">
-        <div class="feature-icon" [innerHTML]="f.icon"></div>
+        <lucide-icon [img]="f.icon" class="feature-icon"></lucide-icon>
         <h3>{{ f.title }}</h3>
         <p>{{ f.desc }}</p>
       </div>
