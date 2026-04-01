@@ -1,0 +1,151 @@
+<!-- home.component.html -->
+
+<!-- ── Hero ───────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge fade-in-up">
+      <!-- Lucide: leaf -->
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 20A7 7 0 014 12.91L10 7h10l-4.26 9.57A7 7 0 0111 20z" />
+        <path d="M11 20V7.22" />
+      </svg>
+      Smart Agriculture Platform
+    </div>
+
+    <h1 class="hero-title fade-in-up" style="animation-delay:.08s">
+      The Future of<br><span class="hero-accent">Farming Is Here</span>
+    </h1>
+
+    <p class="hero-desc fade-in-up" style="animation-delay:.16s">
+      Monitor, automate, and optimize your fields with precision technology.
+      AgriSmart brings industrial-grade tools to every farm, big or small.
+    </p>
+
+    <div class="hero-actions fade-in-up" style="animation-delay:.24s">
+      <ng-container *ngIf="!auth.isLoggedIn; else goToDash">
+        <a routerLink="/register" class="btn-gold">Get Started Free</a>
+        <a routerLink="/login" class="btn-outline-agri btn-light">Sign In</a>
+      </ng-container>
+      <ng-template #goToDash>
+        <a [routerLink]="auth.isAdmin ? '/admin' : '/farmer'" class="btn-gold">Go to Dashboard</a>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Visual panel -->
+  <div class="hero-visual fade-in" style="animation-delay:.32s">
+    <!-- Floating stat cards -->
+    <div class="hero-card-float card-1">
+      <div class="card-dot green"></div>
+      <div>
+        <div class="card-label">Valve Status</div>
+        <div class="card-value">12 / 15 Open</div>
+      </div>
+    </div>
+
+    <div class="hero-card-float card-2">
+      <div class="card-dot gold"></div>
+      <div>
+        <div class="card-label">Soil Moisture</div>
+        <div class="card-value">68% Optimal</div>
+      </div>
+    </div>
+
+    <div class="hero-card-float card-3">
+      <div class="card-dot sage"></div>
+      <div>
+        <div class="card-label">Water Saved</div>
+        <div class="card-value">↓ 42% this month</div>
+      </div>
+    </div>
+
+    <div class="hero-illustration">
+      <svg viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="150" cy="220" rx="140" ry="20" fill="rgba(122,170,138,.15)" />
+        <rect x="20" y="160" width="260" height="10" rx="5" fill="rgba(122,170,138,.2)" />
+        <rect x="20" y="178" width="260" height="10" rx="5" fill="rgba(122,170,138,.15)" />
+        <rect x="20" y="196" width="260" height="10" rx="5" fill="rgba(122,170,138,.1)" />
+        <g fill="#3d7a52">
+          <path d="M60 160 Q55 140 60 120 Q65 140 60 160z" opacity=".8" />
+          <path d="M60 130 Q45 125 40 115 Q55 118 60 130z" opacity=".6" />
+          <path d="M60 130 Q75 125 80 115 Q65 118 60 130z" opacity=".6" />
+          <path d="M120 160 Q115 135 120 110 Q125 135 120 160z" opacity=".85" />
+          <path d="M120 125 Q102 118 96 105 Q112 110 120 125z" opacity=".6" />
+          <path d="M120 125 Q138 118 144 105 Q128 110 120 125z" opacity=".6" />
+          <path d="M180 160 Q175 130 180 100 Q185 130 180 160z" opacity=".9" />
+          <path d="M180 120 Q160 112 153 97 Q170 104 180 120z" opacity=".6" />
+          <path d="M180 120 Q200 112 207 97 Q190 104 180 120z" opacity=".6" />
+          <path d="M240 160 Q235 140 240 120 Q245 140 240 160z" opacity=".8" />
+          <path d="M240 135 Q225 128 220 118 Q232 122 240 135z" opacity=".6" />
+          <path d="M240 135 Q255 128 260 118 Q248 122 240 135z" opacity=".6" />
+        </g>
+        <circle cx="240" cy="50" r="28" fill="rgba(212,168,50,.12)" stroke="rgba(212,168,50,.25)" stroke-width="1" />
+        <circle cx="240" cy="50" r="18" fill="rgba(212,168,50,.25)" />
+        <ellipse cx="90" cy="55" rx="35" ry="18" fill="rgba(255,255,255,.1)" />
+        <ellipse cx="75" cy="62" rx="22" ry="13" fill="rgba(255,255,255,.08)" />
+        <ellipse cx="108" cy="63" rx="20" ry="11" fill="rgba(255,255,255,.08)" />
+        <path d="M150 30 Q150 55 165 65 Q150 75 135 65 Q150 55 150 30z" fill="rgba(100,180,200,.35)" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── Stats bar ───────────────────────────────────────── -->
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item" *ngFor="let s of stats">
+      <div class="stat-value">{{ s.value }}</div>
+      <div class="stat-label">{{ s.label }}</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features ───────────────────────────────────────── -->
+<section class="features-section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Why AgriSmart</span>
+      <h2>Everything your farm needs</h2>
+      <p>From seed to harvest, our tools help you make smarter decisions every step of the way.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-in-up" *ngFor="let f of features; let i = index"
+        [style.animation-delay]="(i * 0.08) + 's'">
+        <div class="feature-icon" [innerHTML]="f.icon"></div>
+        <h3>{{ f.title }}</h3>
+        <p>{{ f.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────── -->
+<section class="cta-section" id="about">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">
+      <!-- Lucide: sparkles -->
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path
+          d="M12 3l1.88 5.76a1 1 0 00.95.69H21l-4.97 3.61a1 1 0 00-.36 1.12L17.55 20l-4.97-3.61a1 1 0 00-1.16 0L6.45 20l1.88-5.82a1 1 0 00-.36-1.12L3 9.45h6.17a1 1 0 00.95-.69L12 3z" />
+      </svg>
+      Join the movement
+    </div>
+    <h2>Ready to grow smarter?</h2>
+    <p>Join thousands of farmers already using AgriSmart to transform their operations.</p>
+    <a routerLink="/register" class="btn-gold" *ngIf="!auth.isLoggedIn">Create Free Account</a>
+    <a [routerLink]="auth.isAdmin ? '/admin' : '/farmer'" class="btn-gold" *ngIf="auth.isLoggedIn">Open Dashboard</a>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────── -->
+<footer class="agri-footer">
+  <div class="footer-brand">
+    <span class="brand-name">AgriSmart</span>
+    <span class="footer-tagline">Cultivating the future of agriculture</span>
+  </div>
+  <p class="footer-copy">© 2025 AgriSmart. Built for farmers, by innovators.</p>
+</footer>

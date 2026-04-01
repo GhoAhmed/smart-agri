@@ -1,0 +1,212 @@
+<!-- register.component.html -->
+<div class="auth-page">
+
+  <!-- ── Left panel ───────────────────────────── -->
+  <div class="auth-left register-left">
+
+    <!-- Brand -->
+    <div class="auth-brand">
+      <div class="auth-brand-icon"
+        style="background:rgba(212,168,50,.15);border-color:rgba(212,168,50,.2);color:var(--gold-light);">
+        <!-- Lucide: sprout -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 20h10" />
+          <path d="M10 20c5.5-2.5.8-6.4 3-10" />
+          <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z" />
+          <path d="M14.1 6a7 7 0 00-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z" />
+        </svg>
+      </div>
+      <span>AgriSmart</span>
+    </div>
+
+    <!-- Body -->
+    <div class="auth-left-body">
+      <h1>Start growing<br><em>smarter today</em></h1>
+      <p>Join thousands of farmers who rely on AgriSmart for precision agriculture management.</p>
+
+      <div class="register-steps">
+        <div class="reg-step">
+          <div class="step-num">1</div>
+          <div class="reg-step-text">
+            <strong>Create account</strong>
+            <span>Register in under a minute</span>
+          </div>
+        </div>
+        <div class="reg-step">
+          <div class="step-num">2</div>
+          <div class="reg-step-text">
+            <strong>Set up your farm</strong>
+            <span>Add fields and valves</span>
+          </div>
+        </div>
+        <div class="reg-step">
+          <div class="step-num">3</div>
+          <div class="reg-step-text">
+            <strong>Go live</strong>
+            <span>Monitor &amp; automate instantly</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-left-foot">© 2025 AgriSmart</div>
+    <div class="auth-deco-ring"></div>
+  </div>
+
+  <!-- ── Right panel ───────────────────────────── -->
+  <div class="auth-right">
+    <div class="auth-form-card fade-in-up">
+
+      <div class="form-header">
+        <h2>Create Account</h2>
+        <p>Fill in your details to get started</p>
+      </div>
+
+      <div class="agri-alert agri-alert-error" *ngIf="error">{{ error }}</div>
+      <div class="agri-alert agri-alert-success" *ngIf="success">{{ success }}</div>
+
+      <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <!-- Username -->
+        <div class="form-group">
+          <label class="agri-label">Username</label>
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <!-- Lucide: user -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </span>
+            <input type="text" class="agri-form-control with-icon" placeholder="john_doe" formControlName="username"
+              autocomplete="username" spellcheck="false" />
+          </div>
+          <span class="field-error" *ngIf="form.get('username')?.invalid && form.get('username')?.touched">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            Username must be at least 3 characters.
+          </span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="agri-label">Email Address</label>
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <!-- Lucide: mail -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M22 7L12 13 2 7" />
+              </svg>
+            </span>
+            <input type="email" class="agri-form-control with-icon" placeholder="you@example.com"
+              formControlName="email" autocomplete="email" />
+          </div>
+          <span class="field-error" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            Please enter a valid email address.
+          </span>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label class="agri-label">Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <!-- Lucide: lock -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" />
+                <path d="M7 11V7a5 5 0 0110 0v4" />
+              </svg>
+            </span>
+            <input [type]="showPassword ? 'text' : 'password'" class="agri-form-control with-icon with-toggle"
+              placeholder="Min. 6 characters" formControlName="password" autocomplete="new-password" />
+            <button type="button" class="toggle-pass" (click)="showPassword = !showPassword">
+              <svg *ngIf="!showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              <svg *ngIf="showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94" />
+                <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19" />
+                <path d="M14.12 14.12a3 3 0 01-4.24-4.24" />
+                <line x1="1" y1="1" x2="23" y2="23" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Strength bar — 4 segments -->
+          <div class="strength-bar str-{{ passwordStrength }}" *ngIf="form.get('password')?.value">
+            <div class="strength-segments">
+              <div class="strength-seg"></div>
+              <div class="strength-seg"></div>
+              <div class="strength-seg"></div>
+              <div class="strength-seg"></div>
+            </div>
+            <span class="strength-label {{ strengthClass }}">{{ strengthLabel }}</span>
+          </div>
+
+          <span class="field-error" *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            Password must be at least 6 characters.
+          </span>
+        </div>
+
+        <!-- Confirm password -->
+        <div class="form-group">
+          <label class="agri-label">Confirm Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <!-- Lucide: shield-check -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <polyline points="9 12 11 14 15 10" />
+              </svg>
+            </span>
+            <input type="password" class="agri-form-control with-icon" placeholder="Re-enter password"
+              formControlName="confirmPassword" autocomplete="new-password" />
+          </div>
+          <span class="field-error" *ngIf="form.hasError('mismatch') && form.get('confirmPassword')?.touched">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            Passwords do not match.
+          </span>
+        </div>
+
+        <button type="submit" class="btn-primary-agri btn-full" [disabled]="loading">
+          <span *ngIf="!loading">Create Account</span>
+          <span *ngIf="loading" class="loading-dots">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+      </form>
+
+      <p class="auth-switch">Already have an account? <a routerLink="/login">Sign in</a></p>
+    </div>
+  </div>
+</div>
